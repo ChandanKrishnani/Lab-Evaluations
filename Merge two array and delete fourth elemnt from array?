@@ -1,0 +1,83 @@
+#include<conio.h>
+#include<iostream.h>
+
+void main()
+{
+
+     int i,m,n,j,ar1[10],ar2[10],ar3[10],k;
+     clrscr();
+     cout<<"Enter Number of element for first array :";
+     cin>>n;
+         for(i=1;i<=n;i++)
+              {
+                   cout<<"Enter the element for 1'st array :";
+                   cin>>ar1[i];
+              }
+      cout<<"Enter Number of element for second array :";
+      cin>>m;
+           for(j=1;j<=m;j++)
+              {
+                     cout<<"Enter the element for secand array :";
+                     cin>>ar2[j];
+              }
+       i=j=k=1;
+           while(i<=n && j<=m)
+              {
+                     if(ar1[i]<ar2[j])
+                         {
+                                        ar3[k]=ar1[i];
+                                         i++;
+                          }
+                     else
+                          {
+                                    	ar3[k]=ar2[j];
+                                           j++;
+                           }
+                     k++;
+              }
+
+          while(i<=n)
+             {
+                    ar3[k]=ar1[i];
+                     i++;
+                     k++;
+              }
+        while(j<=m)
+              {
+                     ar3[k]=ar2[j];
+                     j++;
+                     k++;
+               }
+        for(i=1;i<=m+n;i++)
+              {
+                     cout<<"Here it is :"<<ar3[i]<<endl;
+              }
+
+//Deletion of array 
+
+    cout<<"Enter the position at which you want to delete :";
+    cin>>i;
+       if(i<=(m+n))
+          {
+                    cout<<endl<<"Number is deleted";
+                     while(i<=m+n)
+                          {
+                                          ar3[i]=ar3[i+1];
+                                          i++;
+                           }
+               }
+           else
+              {
+                      cout<<"Number can not be deleted"<<endl;
+              }
+
+          for(i=1;i<=(m+n)-1;i++)
+              {
+                       cout<<endl<<"Here it is"<<ar3[i];
+              }
+           getch();
+ 
+
+ }
+//End of Program
+
