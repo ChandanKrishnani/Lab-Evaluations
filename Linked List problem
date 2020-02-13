@@ -1,0 +1,104 @@
+//start of the program
+	#include<conio.h>
+	#include<stdio.h>
+	typedef struct ddl
+		{
+			 struct ddl *prev;
+			 int info;
+			 struct ddl *next;
+		 }node;
+	node *head,*tail;
+
+void insert()
+{
+	 node *ptr;
+	 ptr=(node*)malloc(sizeof(node));
+	 printf("Enter the number :");
+	 scanf("%d",&ptr->info);
+	 if(head==NULL)
+	 {
+		  head=tail=ptr;
+		  ptr->prev=ptr->next=NULL;
+	 }
+	 else
+	 {
+		  tail->next=ptr;
+		  ptr->prev=tail;
+		  ptr->next=NULL;
+		  tail=ptr;
+	 }
+}
+void display()
+{
+	 node *ptr;
+	 ptr=head;
+	 while(ptr!=NULL)
+	 {
+	  printf("Data is %d\n",ptr->info);
+	  ptr=ptr->next;
+	 }
+}
+void search()
+{
+	 node *ptr,*loc,*temp,*temp2;
+	 int item,flag=0;
+	 ptr=head;
+	 printf("Enter the number to insert :");
+	 scanf("%d",&item);
+	 while(ptr!=NULL)
+	 {
+		 if(ptr->info==item)
+		 {
+			 loc=ptr;
+			  ++flag;
+			  break;
+		 }
+		  ptr=ptr->next;
+
+	  }
+	  if(flag==0)
+	  {
+		 printf("\nNUmber was not there it will be added \n");
+		 ptr=(node*)malloc(sizeof(node));
+		 ptr->info=item;
+		 tail->next=ptr;
+		 ptr->prev=tail;
+		 ptr->next=NULL;
+		 tail=ptr;
+		 display();
+
+	}
+	 else
+	 {
+		printf("\nNumber found next to it will be deleted \n");
+		if(loc->next==NULL)
+		  {
+			   printf("\nIt was the last node \n");
+			   display();
+		  }
+		else
+		   {
+			   temp=loc->next;
+			   temp2=temp->next;
+			   loc->next=temp->next;
+			   temp2->prev=temp->prev;
+			   free(temp);
+			   display();
+		    }
+	     }
+}
+void main()
+{
+	 int n,i;
+	 clrscr();
+	 printf("Enter the number :");
+	 scanf("%d",&n);
+	 for(i=0;i<n;i++)
+	  {
+		  insert();
+	  }
+	  display();
+	  search();
+}
+
+//end of the program
