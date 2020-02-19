@@ -1,0 +1,76 @@
+#include<stdio.h>
+#include<conio.h>
+int top,stack[10],item,maxstk=10;
+void push()
+{
+  printf("ENter the number");
+  scanf("%d",&item);
+  if(top==maxstk)
+  {
+    printf("Overflow condition ");
+  }
+  else
+  {
+    top=top+1;
+    stack[top]=item;
+   }
+}
+void pop()
+  {
+    if(top==0)
+   {
+     printf("Underflow ");
+   }
+   else
+   {
+     item=stack[top];
+     top=top-1;
+     printf("Item is deleted :%d",item);
+
+   }
+}
+void disp()
+{
+  int i;
+  for(i=1;i<=top;i++)
+  {
+   printf("\nHere is it : %d",stack[i]);
+  }
+}
+int main()
+{
+    int a;
+while(1)
+{
+  printf(" \n1.Push an item ");
+  printf("\n2.Pop an item");
+  printf("\n3.Print item");
+  printf("\n4.To exit");
+
+  scanf("%d",&a);
+  switch(a)
+  {
+   case 1:
+   {
+     push();
+     break;
+   }
+
+   case 2:
+   {
+    pop();
+    break;
+   }
+   case 3:
+   {
+    disp();
+    break;
+   }
+   case 4:
+   {
+    return 0;
+   }
+  }
+ }
+}
+
