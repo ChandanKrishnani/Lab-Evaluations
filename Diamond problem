@@ -1,0 +1,57 @@
+#include<conio.h>
+#include<iostream.h>
+class base
+{
+  public:
+	int a;
+	base()
+	{       a=0;
+		cout<<"base\n";
+	}
+	base(int z)
+	{
+	    a=z;
+	    cout<<"base with para\n";
+	}
+};
+
+class parent1:public base
+{
+   public:
+     int b;
+     parent1(int y,int z):base(z)
+     {
+	 b=y;
+	 cout<<"parent1...\n";
+     }
+};
+class parent2:public base
+{
+   public:
+       int c;
+       parent2(int y,int z):base(z)
+       {
+	  c=y;
+	  cout<<"parant2...\n";
+	}
+};
+class child:public parent1,public parent2
+{
+   public:
+       int d;
+       child(int x,int y,int z):parent1(y,z),parent2(y,z)
+       {
+	   d=x;
+	   cout<<"child...\n";
+       }
+       void disp()
+       {
+	  cout<<base::a;
+       }
+};
+void main()
+{
+ clrscr();
+ child obj(1,2,3);
+ obj.disp();
+}
